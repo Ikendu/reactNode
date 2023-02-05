@@ -1,13 +1,16 @@
 const express = require('express')
 const app = express()
 
-//middleware 
+const logger = require('./logger-middle')
 
-app.get('/', logger, (req, res) => {
+app.use(logger)
+
+//middleware 
+app.get('/', (req, res) => {
 	res.send('<h1>Home Page</h1>')
 })
 
-app.get('/about', logger, (req, res) => {
+app.get('/about', (req, res) => {
 	res.send('<h1> About Page </h1>')
 })
 
